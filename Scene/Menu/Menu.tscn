@@ -1,0 +1,127 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scene/Game/Game.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Font/editundo.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scene/Menu/Menu.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 60
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 60
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 80
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="Menu" type="Node"]
+script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="CanvasLayer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/Control"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -70.5
+margin_top = 25.0
+margin_right = 62.5
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 1 )
+text = "BIRDY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Control/Label2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -65.5
+margin_top = -9.0
+margin_right = 64.5
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 2 )
+text = "BIRDY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/Control"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -79.5
+margin_top = 73.0
+margin_right = 70.5
+margin_bottom = 126.0
+custom_fonts/font = SubResource( 3 )
+text = "FLAPS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Control/Label3"]
+margin_top = -7.0
+margin_right = 150.0
+margin_bottom = 46.0
+custom_fonts/font = SubResource( 4 )
+text = "FLAPS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="CanvasLayer/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -86.5
+margin_top = -38.5
+margin_right = 86.5
+margin_bottom = 38.5
+custom_fonts/font = SubResource( 5 )
+text = "PLAY"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Game" parent="." instance=ExtResource( 1 )]
+
+[connection signal="pressed" from="CanvasLayer/Control/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Play" to="Game" method="_on_Play_pressed"]

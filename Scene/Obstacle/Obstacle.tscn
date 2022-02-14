@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scene/Obstacle/Obstacle.gd" type="Script" id=2]
+[ext_resource path="res://Scene/Obstacle/obstacle_tile_1.tres" type="TileSet" id=3]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 262.722 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 1, 500 )
+
+[node name="Panels" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 112, 64 )
+
+[node name="obstacleHolder" type="Node2D" parent="."]
+
+[node name="obstacle1" type="StaticBody2D" parent="obstacleHolder" groups=[
+"obstacle",
+]]
+position = Vector2( -16, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacleHolder/obstacle1"]
+position = Vector2( 16, -263 )
+shape = SubResource( 3 )
+
+[node name="obstacle1" type="TileMap" parent="obstacleHolder/obstacle1"]
+position = Vector2( 0, 48 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 32, 16 )
+collision_use_parent = true
+format = 1
+tile_data = PoolIntArray( -2359296, 0, 0, -2228224, 1, 0, -2162688, 1, 0, -2097152, 1, 0, -2031616, 1, 0, -1966080, 1, 0, -1900544, 1, 0, -1835008, 1, 0, -1769472, 1, 0, -1703936, 1, 0, -1638400, 1, 0, -1572864, 1, 0, -1507328, 1, 0, -1441792, 1, 0, -1376256, 1, 0, -1310720, 1, 0, -1245184, 1, 0, -1179648, 1, 0, -1114112, 1, 0, -1048576, 1, 0, -983040, 1, 0, -917504, 1, 0, -851968, 1, 0, -786432, 1, 0, -720896, 1, 0, -655360, 1, 0, -589824, 1, 0, -524288, 1, 0, -458752, 1, 0, -393216, 1, 0, -327680, 2, 0 )
+
+[node name="obstacle2" type="StaticBody2D" parent="obstacleHolder" groups=[
+"obstacle",
+]]
+position = Vector2( -16, 144 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="obstacleHolder/obstacle2"]
+position = Vector2( 16, 263 )
+shape = SubResource( 3 )
+
+[node name="obstacle1" type="TileMap" parent="obstacleHolder/obstacle2"]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 32, 16 )
+collision_use_parent = true
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 131072, 1, 0, 196608, 1, 0, 262144, 1, 0, 327680, 1, 0, 393216, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 1, 0, 655360, 1, 0, 720896, 1, 0, 786432, 1, 0, 851968, 1, 0, 917504, 1, 0, 983040, 1, 0, 1048576, 1, 0, 1114112, 1, 0, 1179648, 1, 0, 1245184, 1, 0, 1310720, 1, 0, 1376256, 1, 0, 1441792, 1, 0, 1507328, 1, 0, 1572864, 1, 0, 1638400, 1, 0, 1703936, 1, 0, 1769472, 1, 0, 1835008, 1, 0, 1900544, 1, 0, 1966080, 2, 0 )
+
+[node name="PointAdder" type="Area2D" parent="obstacleHolder"]
+position = Vector2( 0, 80 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacleHolder/PointAdder"]
+shape = SubResource( 4 )
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="Node2D2"]
+position = Vector2( 0, 256 )
+
+[node name="Position2D2" type="Position2D" parent="Node2D2"]
+position = Vector2( 0, 144 )
+
+[node name="Position2D3" type="Position2D" parent="Node2D2"]
+
+[node name="Position2D4" type="Position2D" parent="Node2D2"]
+position = Vector2( 0, 336 )
+
+[node name="Position2D5" type="Position2D" parent="Node2D2"]
+position = Vector2( 0, 416 )
+
+[node name="NextPoint" type="Position2D" parent="."]
+position = Vector2( 256, 0 )
+
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="body_entered" from="obstacleHolder/PointAdder" to="." method="_on_PointAdder_body_entered"]
